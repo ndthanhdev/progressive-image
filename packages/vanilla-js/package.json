@@ -1,0 +1,22 @@
+{
+  "name": "vanilla",
+  "version": "0.0.1",
+  "description": "> TODO: description",
+  "author": "Thanh Nguyen <ndthanhdev@outlook.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/vanilla-js.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "progressive-image": "^0.0.1"
+  }
+}
