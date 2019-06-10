@@ -1,50 +1,33 @@
-import React from "react";
-import { Provider, ProgressiveImage, usePIContext, ImageBus } from "./lib";
-import sources from "./sources";
-import { InView } from "react-intersection-observer";
-
-function Divider() {
-  return <div style={{ height: "30rem" }} />;
-}
+import React, { useState } from "react";
+import Mode0 from "./Mode0";
+import Mode1 from "./Mode1";
 
 function App() {
-  const bus = new ImageBus();
+  const urlParams = new URLSearchParams(window.location.search);
+  const initMode = urlParams.get("mode") || 0;
 
-  window.bus = bus;
+  const [mode, setMode] = useState(parseInt(initMode));
 
-  const items = sources.map((value, index) => {
-    let _id = "";
-
-    return (
-      <div key={index}>
-        <Divider />
-        <InView
-          onChange={inview => {
-            inview && bus.load(_id, +new Date());
-          }}
-          rootMargin="50px"
-          threshold={0.1}
-        >
-          <ProgressiveImage
-            {...value}
-            width={640}
-            height={480}
-            busref={id => {
-              _id = id;
-            }}
-          />
-        </InView>
-      </div>
-    );
-  });
+  const handleSetMode = mode => () => {
+    setMode(mode);
+    // window.location.search = `?mode=${mode}`;
+  };
 
   return (
     <div>
-      <Provider bus={bus}>
-        <Divider />
-        {items}
-        <Divider />
-      </Provider>
+      <div
+        style={{
+          position: "sticky",
+          top: 48,
+          left: "50%",
+          display: "inline-block"
+        }}
+      >
+        <button onClick={handleSetMode(0)}>Mode 0</button>
+        <button onClick={handleSetMode(1)}>Mode 1</button>
+      </div>
+      {mode === 0 && <Mode0 />}
+      {mode === 1 && <Mode1 />}
     </div>
   );
 }
