@@ -1,22 +1,4 @@
-import React from "react";
-import "./index.css";
+import V1 from "./V1";
+import V2 from "./V2";
 
-export function ImageBubble({
-  srcs = [],
-  className,
-  style,
-  itemStyle,
-  itemClassName
-}) {
-  const items = srcs.map(src => (
-    <img src={src} style={itemStyle} className={itemClassName} />
-  ));
-
-  return (
-    <div className={className} style={style}>
-      {items}
-    </div>
-  );
-}
-
-export default ImageBubble;
+export { V1, V2 };

@@ -1,13 +1,10 @@
 import React from "react";
 import { sources } from "./sources";
 import "./common.css";
+import { V1 } from "./image-bubble";
 
 export function Mode0() {
-  const items = sources.map(({ src }) => (
-    <img key={src} src={src} className="item" />
-  ));
-
-  return <div className="bubble">{items}</div>;
+  return <V1 srcs={sources} className="bubble" itemClassName="item" />;
 }
 
 export default Mode0;
